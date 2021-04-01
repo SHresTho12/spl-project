@@ -3,7 +3,7 @@ import React from 'react';
 const Index = () => {
   return (
     <div>
-      <link rel="stylesheet" href="style.css">
+      <link rel="stylesheet" href="/src/Components/Carousel/style.css">
     
     <div class="carousel">
       <button class="carousel_button carousel_button--left">
