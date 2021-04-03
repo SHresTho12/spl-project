@@ -1,40 +1,86 @@
-import React from 'react';
+//not sure 
+const track = document.querySelector('.carousel__track');
+//stores the slides in the array
+const slides = Array.from(track.children);
+//object for next button
+const nextButton = document.querySelector('.carousel__button--next');
+//object for prev button
+const prevButton = document.querySelector('.carousel__button--prev');
+//object for indicator nav
+const dotsNav = document.querySelector('.carousel__nav');
+//stores the indicator dots in the array
+const dots = Array.from(dotsNav.children);
 
-const Index = () => {
-  return (
-    <div>
-      <link rel="stylesheet" href="/src/Components/Carousel/style.css">
-    
-    <div class="carousel">
-      <button class="carousel_button carousel_button--left">
-        <img src="left.png" alt="">
-      </button>
-      <div class="carousel_track-container">
-        <ul class="carousel_track">
-          <li class="carousel_slide">
-          <img class="carousel_image" src="/src/Images/image1.jpg" alt="">
-          </li>            
-          <li class="carousel_slide">
-          <img class="carousel_image" src="/src/Images/image2.jpg" alt="">
-          </li>            
-          <li class="carousel_slide">
-          <img class="carousel_image" src="/src/Images/image3.jpg" alt="">
-          </li>            
+//takes the width of the slides
+const slideWidth = slides[0].getBoundingClientRect().width;
 
-        </ul>
-      </div>
-      <button class="carousel_button carousel_button--right">
-      <img src="right.jpg" alt="">
-      </button>
-      <div class="carousel_nav">
-        <button class="carousel_indicator current-slide"></button>
-        <button class="carousel_indicator"></button>
-        <button class="carousel_indicator"></button>
-        </button>
-      </div>
-    </div>
-    </div>
-  );
+
+//function that places the slides next to one another
+const setSlidePosition = (slide, index) => {
+    slide.style.left = slideWidth * index + 'px';
 };
+slides.forEach(setSlidePosition);
 
-export default Index;
+//not sure
+const moveToSlide = (track, currentSlide, targetSlide) => {
+    track.style.transform = 'translatex(-' + targetSlide.style.left;
+    //error: not complete
+
+    currentSlide.classList.remove('current-slide');
+    //removes the node
+
+    targetSlide.classList.add('current-slide');
+    
+}
+
+//not sure: dot turns darker when selected
+const updateDots = (currentDot, targetDot) => {
+    currentDot.classList.remove('current-slide');
+    targetDot.classList.add('current-slide');
+}
+
+
+//error: not complete
+const hideShowArrows = (slides, prevButton, nextButton, targetSlide) => {
+    if (targetIndex === 0){
+        nextButton.classList.remove('is-hidden');
+    }
+    else if (targetIndex === slides.length - 1){
+        prevButton.classList.remove('is-hidden');
+        nextButton.classList.add('is-hidden');
+    }
+    else {
+        prevButton.classList.remove('is-hidden');
+        nextButton.classList.remove('is-hidden');
+    }
+}
+
+/*
+
+*/
+
+prevButton.addEventListener('click', e => {
+    const currentSlide = track.querySelector('.current-slide');
+    const prevSlide = currentSlide.previousElementSibling;
+    const currentDot = dotsNav.querySelector('.current-slide');
+    const prevDot = currentDot.previousElementSibling;
+    const prevIndex = slides.findIndex(slide => slide === prevSlide);
+    //error: fixed
+
+    moveToSlide(track, currentSlide, prevSlide);
+    updateDots(currentDot, prevDot);
+    hideShowArrows(slides, prevButton, nextButton, prevIndex);
+});
+
+nextButton.addEventListener('click', e => {
+    const currentSlide = track.querySelector('.current-slide');
+    const nextSlide = currentSlide.nextElementSibling;
+    const currentDot = dotsNav.querySelector('.current-slide');
+    const nextDot = currentDot.nextElementSibling; //fixed
+    const nextIndex = slides.findIndex(slide => slide === nextSlide);
+    //error: not complete
+
+    moveToSlide(track, currentSlide, prevSlide);
+    updateDots(currentDot, nextDot); //fixed
+    hideShowArrows(slides, prevButton, nextButton, nextIndex); // fixed
+});
