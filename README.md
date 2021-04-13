@@ -69,3 +69,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 # spl-project
+
+## Figma
+this website is used in the project for basic design and structure. to view our design project click here:
+[figma_design](https://www.figma.com/files/team/957624893478973239/SPl-Project?fuid=957890893114862536)
