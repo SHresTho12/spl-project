@@ -8,17 +8,15 @@ import image3 from '../../Images/image3.jpg';
 import './Index'
 const Carousel = () => {
   return (
-    
-       
      
-    
+    <body> 
      <div className="carousel">
-       <button className="carousel_button carousel_button--left is-hidden"><img src={left} alt=""/></button>
+       <button className="carousel__button carousel__button--left is-hidden"><img src={left} alt=""/></button>
          
        
        <div className="carousel_track-container">
          <ul className="carousel_track">
-           <li className="carousel_slide">
+           <li className="carousel_slide current-slide">
            <img className="carousel_image" src={image1} alt=""/>
            </li>            
            <li className="carousel_slide">
@@ -40,8 +38,8 @@ const Carousel = () => {
         
        </div>
      </div>
-     
-   
+      <script src = "index.js"></script>
+      </body>
   );
 };
 
